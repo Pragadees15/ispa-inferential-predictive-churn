@@ -80,7 +80,7 @@ Customer_Churn_Model/
 
 
 ## 🧮 Data
-- Source: IBM Telco Customer Churn dataset (`data/WA_Fn-UseC_-Telco-Customer-Churn.csv`).
+- Source: IBM Telco Customer Churn dataset (`data/WA_Fn-UseC_-Telco-Customer-Churn.csv`). Online source: [IBM Telco Customer Churn CSV](https://github.com/IBM/telco-customer-churn-on-icp4d/blob/master/data/Telco-Customer-Churn.csv)
 - Preprocessing highlights (`src/preprocess.py`):
   - Coerces `TotalCharges` to numeric and fills missing as 0 (new customers)
   - Drops `customerID`
@@ -331,7 +331,7 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 
 ## 📄 License & Acknowledgments
 - License: MIT License — see [LICENSE](LICENSE)
-- Dataset: IBM Telco Customer Churn
+- Dataset: [IBM Telco Customer Churn CSV](https://github.com/IBM/telco-customer-churn-on-icp4d/blob/master/data/Telco-Customer-Churn.csv)
 - Libraries: scikit‑learn, pandas, matplotlib, seaborn, joblib, jupyter
 
 ---
