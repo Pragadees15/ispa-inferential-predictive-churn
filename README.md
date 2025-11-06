@@ -1,34 +1,61 @@
-# Customer Churn Prediction – End-to-End ML Pipeline
+<div align="center">
 
-[![Made with Python](https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
-[![Notebook](https://img.shields.io/badge/Notebooks-Jupyter-F37626?logo=jupyter&logoColor=white)](notebooks/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#-contributors)
+  <h1>Customer Churn Prediction</h1>
+  <p><i>End-to-end, reproducible ML pipeline with training, evaluation, and CLI inference</i></p>
 
-A production-style, fully reproducible machine learning pipeline for predicting customer churn using Logistic Regression and an interpretable CHAID-style Decision Tree. Includes EDA, feature engineering, training, evaluation (ROC, Gains, Lift), model persistence, CLI prediction, and model update workflow.
+  <p>
+    <a href="https://www.python.org/"><img alt="Made with Python" src="https://img.shields.io/badge/Made%20with-Python-3776AB?logo=python&logoColor=white"></a>
+    <a href="https://scikit-learn.org/"><img alt="scikit-learn" src="https://img.shields.io/badge/ML-scikit--learn-F7931E?logo=scikitlearn&logoColor=white"></a>
+    <a href="notebooks/"><img alt="Jupyter" src="https://img.shields.io/badge/Notebooks-Jupyter-F37626?logo=jupyter&logoColor=white"></a>
+    <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
+    <a href="#-contributors"><img alt="All Contributors" src="https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square"></a>
+  </p>
+
+</div>
+
+<p align="center">
+  A production-style, fully reproducible machine learning pipeline for predicting customer churn using Logistic Regression and an interpretable CHAID-style Decision Tree. Includes EDA, feature engineering, training, evaluation (ROC, Gains, Lift), model persistence, CLI prediction, and model update workflow.
+</p>
 
 
-## 🔗 Quick Links
-- **Run the full pipeline**: `python main.py`
-- **Predict for new customers**: `python src/predict_churn.py --data data/new_customers.csv --output predictions.csv`
-- **Retrain/update model**: `python src/update_model.py --data data/WA_Fn-UseC_-Telco-Customer-Churn.csv`
-- **EDA Notebooks**: `notebooks/churn_analysis.ipynb`, `notebooks/customer_churn_end_to_end.ipynb`
+## ✨ Features
+- **End-to-end pipeline**: preprocessing, training, evaluation, reporting, artifact saving
+- **Two model families**: Logistic Regression and interpretable CHAID-style Decision Tree
+- **Business-friendly insights**: rules extracted from the tree with probabilities and support
+- **Robust evaluation**: ROC‑AUC, Gains, Lift, and comparative charts auto-saved
+- **Reproducible**: deterministic splits and persisted encoders alongside models
+- **Simple CLI**: batch predict on CSVs and update/retrain on new data
 
 
-## 🧭 Table of Contents
+<details>
+  <summary><b>🧭 Table of Contents</b></summary>
+
+- [Quick Start](#-quick-start)
 - [Project Overview](#-project-overview)
+- [Visuals](#-visuals)
 - [Project Structure](#-project-structure)
-- [Data](#-data)
-- [How to Run](#-how-to-run)
+- [Dataset](#-dataset)
+- [Usage](#-usage)
+  - [Run the full pipeline](#run-the-full-pipeline)
+  - [Predict for new customers](#predict-for-new-customers)
+  - [Retrain or update the model](#retrain-or-update-the-model)
 - [Modules](#-modules)
 - [Notebooks](#-notebooks)
 - [Modeling](#-modeling)
 - [Evaluation & Outputs](#-evaluation--outputs)
-- [CLI Usage](#-cli-usage)
+- [API Reference](#-api-reference)
 - [Dependencies](#-dependencies)
 - [Contributors](#-contributors)
 - [License & Acknowledgments](#-license--acknowledgments)
+
+</details>
+
+
+## ⚡ Quick Start
+- **Run the full pipeline**: `python main.py`
+- **Predict for new customers**: `python src/predict_churn.py --data data/new_customers.csv --output predictions.csv`
+- **Retrain/update model**: `python src/update_model.py --data data/WA_Fn-UseC_-Telco-Customer-Churn.csv`
+- **Open notebooks**: `notebooks/churn_analysis.ipynb`, `notebooks/customer_churn_end_to_end.ipynb`
 
 
 ## 📋 Project Overview
@@ -37,6 +64,15 @@ This repository implements an end‑to‑end churn prediction workflow:
 - **Modeling**: Logistic Regression and a CHAID-style Decision Tree (sklearn `DecisionTreeClassifier` tuned for interpretability)
 - **Evaluation**: Accuracy, Precision, Recall, F1, ROC‑AUC, Gains and Lift analysis; visual comparisons
 - **Operationalization**: Persisted models, CLI prediction for new customers, and model update script
+
+
+## 🖼️ Visuals
+
+| ROC Curves | Gains Chart | Lift Chart |
+| --- | --- | --- |
+| <img src="reports/visuals/roc_curves.png" alt="ROC Curves" width="280"/> | <img src="reports/visuals/gains_chart.png" alt="Gains Chart" width="280"/> | <img src="reports/visuals/lift_chart.png" alt="Lift Chart" width="280"/> |
+
+Additional figures are saved under `reports/visuals/`, including categorical/numeric distributions, bivariate analysis, correlation heatmap, and CHAID tree visualization.
 
 
 ## 📁 Project Structure
@@ -79,7 +115,7 @@ Customer_Churn_Model/
 ```
 
 
-## 🧮 Data
+## 📊 Dataset
 - Source: IBM Telco Customer Churn dataset (`data/WA_Fn-UseC_-Telco-Customer-Churn.csv`). Online source: [IBM Telco Customer Churn CSV](https://github.com/IBM/telco-customer-churn-on-icp4d/blob/master/data/Telco-Customer-Churn.csv)
 - Preprocessing highlights (`src/preprocess.py`):
   - Coerces `TotalCharges` to numeric and fills missing as 0 (new customers)
@@ -89,7 +125,7 @@ Customer_Churn_Model/
 
 
 ## 🚀 How to Run
-1) Create and activate a virtual environment (recommended), then install deps:
+1) Create and activate a virtual environment (recommended), then install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -100,6 +136,14 @@ Windows (PowerShell) virtual environment example:
 ```bash
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+macOS/Linux virtual environment example:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -168,12 +212,6 @@ The pipeline generates the following artifacts automatically:
   - EDA Figures: `categorical_distributions.png`, `numeric_distributions.png`, `bivariate_analysis.png`, `correlation_heatmap.png`
   - CHAID Tree: `chaid_tree_visualization.png`
 
-Quick preview:
-
-![ROC Curves](reports/visuals/roc_curves.png)
-![Gains Chart](reports/visuals/gains_chart.png)
-![Lift Chart](reports/visuals/lift_chart.png)
-
 Key insights commonly observed on Telco churn:
 - **Contract Type**: Month‑to‑month has the highest churn
 - **Tenure**: Lower tenure (0–12 months) customers churn more
@@ -221,14 +259,21 @@ proba = model.predict_proba(X)[:, 1]
 ```
 
 
-## 🖥️ CLI Usage
+## 🖥️ Usage
+### Run the full pipeline
+
+```bash
+python main.py
+```
+
+### Predict for new customers
 - Predict churn for a CSV of customers:
 
 ```bash
 python src/predict_churn.py --data data/new_customers.csv --model models/churn_model.joblib --output predictions.csv
 ```
 
-- Predict programmatically:
+Programmatic example:
 
 ```python
 from src.predict_churn import predict_churn
@@ -259,14 +304,14 @@ results = predict_churn(customer, model_path="models/churn_model.joblib")
 print(results)
 ```
 
-- Update/retrain the model on new data:
+### Retrain or update the model
 
 ```bash
 python src/update_model.py --data data/WA_Fn-UseC_-Telco-Customer-Churn.csv --model models/churn_model.joblib
 ```
 
 
-## 🧪 Minimal API Reference
+## 🧪 API Reference
 - `preprocess.prepare_data(file_path) -> (X, y, feature_names, encoders, df)`
 - `train.train_models(X, y, feature_names) -> dict` (includes models, splits, rules)
 - `evaluate.evaluate_models(lr_model, chaid_model, X_test, y_test, feature_names) -> (comparison_df, gains_lift_lr, gains_lift_tree)`
@@ -289,6 +334,13 @@ pip install -r requirements.txt
 
 - Python 3.7+
 - pandas, numpy, scikit‑learn, matplotlib, seaborn, joblib, jupyter
+
+
+## 🤝 Contributing
+Contributions of any kind are welcome! If you’d like to contribute:
+- Fork the repository and create a new branch
+- Make your changes with clear commit messages
+- Open a pull request describing the change and rationale
 
 
 ## 👥 Contributors
